@@ -13,22 +13,26 @@ const Wrapper = styled.div`
   background-color: ${theme.palette.secondary.light}
 `;
 
-const ProgressBar: React.FC<ProgressBar> = ({ progress }) => {
+const resolveColor = (progress: number) => {
   const color = progress < 25
     ? 'error'
     : progress < 75
       ? 'warning'
       : 'success';
 
-  const Progress = styled.div`
-    background-color: ${theme.palette[color].main};
-    width: ${progress}%;
+  return theme.palette[color].main;
+};
+
+const Progress = styled.div`
+    background-color: ${(props: ProgressBar) => resolveColor(props.progress)};
+    width: ${(props: ProgressBar) => props.progress}%;
     height: 100%;
   `;
 
+const ProgressBar: React.FC<ProgressBar> = ({ progress }) => {
   return (
     <Wrapper>
-      <Progress/>
+      <Progress progress={progress}/>
     </Wrapper>
   );
 };

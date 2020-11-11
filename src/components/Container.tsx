@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import theme from '../theme';
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1100px;
   margin-top: ${theme.spacing(6)};
   margin-left: auto;
   margin-right: auto;
